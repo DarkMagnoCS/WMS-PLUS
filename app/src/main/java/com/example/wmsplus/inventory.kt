@@ -15,7 +15,11 @@ data class InventoryItem(
     val name: String,
     val category: String,
     val quantity: Int,
-    val location: String
+    val location: String,
+    val seller: String,
+    val origin: String,
+    val price: Double,
+    val dateAdded: String
 )
 
 
@@ -29,7 +33,12 @@ interface InventoryDao {
 
     @Delete
     fun deleteItem(item: InventoryItem)
+
+    // Optional: Query by seller or other fields
+    @Query("SELECT * FROM inventory WHERE seller = :seller")
+    fun getItemsBySeller(seller: String): List<InventoryItem>
 }
+
 
 @Database(entities = [InventoryItem::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

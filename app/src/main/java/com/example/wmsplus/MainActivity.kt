@@ -1,5 +1,6 @@
 package com.example.wmsplus
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,12 +39,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
-
-val db = Room.databaseBuilder(
-    applicationContext,
-    AppDatabase::class.java, "inventory-database"
-).build()
-
 
 @Preview(showBackground = true)
 @Composable
